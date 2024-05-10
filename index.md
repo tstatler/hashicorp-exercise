@@ -1,12 +1,24 @@
 ## Comparing git push, pull, and fetch commands
 
-- `git push` - sent changes from a local branch to a remote repo
-- `git fetch` - get changes from a remote repo into your tracking branch
-- `git pull` - will get changes from a remote branch into your tracking branch and merge them into a local branch
+You use the `git push,` `git fetch,` and `git pull` commands to synchronize changes between local and remote repositories.
 
-## Git push
+- [`git push`](#git-push) - Uploads changes from your local branch to the remote branch.
+- [`git fetch`](#git-fetch) — Retrieves changes from the remote branch into the remote-tracking branch without merging them into your local branch.
+- [`git pull`](#git-pull) - Retrieves changes from the remote branch into the remote-tracking branch and merges them into your local branch.
 
-`git push` takes our current branch, and checks to see whether or not there is a tracking branch for a remote repository connected to it. If so, our changes are taken from our branch and pushed to the remote branch. This is how code is shared with a remote repository, you can think of it as "make the remote branch resemble my local branch". This will fail if the remote branch has diverged from your local branch: if not all the commits in the remote branch are in your local branch. When this happens, your local branch needs to be synchronized with the remote branch with git pull or git fetch and git merge.
+### Git push
+
+The `git push` command uploads changes in your local branch to the remote branch. This operation makes the remote branch identical to your local branch. It first checks that there is a remote-tracking branch for the remote repository connected to your local branch and then synchronizes local changes with the remote branch.
+
+If not all commits in the remote branch are in your local branch, the remote will reject the push operation, as shown below:
+
+```bash
+git push
+To https://github.com/example/example.git
+! [rejected]        feature-branch -> feature-branch
+```
+
+In this case, you need to first synchronize your branch with the remote branch by either running `git pull` or `git fetch` followed by `git merge`. S
 
 ## Git fetch
 
