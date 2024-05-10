@@ -8,9 +8,7 @@ You use the `git push,` `git fetch,` and `git pull` commands to synchronize chan
 
 ### Git push
 
-The `git push` command uploads changes in your local branch to the remote branch. This operation makes the remote branch identical to your local branch. It first checks that there is a remote-tracking branch for the remote repository connected to your local branch and then synchronizes local changes with the remote branch.
-
-If not all commits in the remote branch are in your local branch, the remote will reject the push operation, as shown below:
+The `git push` command first checks that there is a remote-tracking branch for the remote repository connected to your local branch. If so, it synchronizes your local changes with the remote branch. In other words, this operation makes the remote branch identical to your local branch.  If not all commits in the remote branch are in your local branch, the remote will reject the push operation, as shown below:
 
 ```bash
 git push
@@ -22,7 +20,7 @@ In this case, you need to first synchronize your branch with the remote branch b
 
 ### Git fetch
 
-The `git fetch` command updates your remote-tracking branch with changes from the remote branch, but does not merge those changes into your local branch. This allows you to review the incoming changes before updating your working branch. It first checks for the existence of a corresponding remote-tracking branch (`origin/main,` for example). If one exists, it updates the tracking branch with the changes from the remote branch.
+The `git fetch` command updates your remote-tracking branch with changes from the remote branch but does not merge those changes into your local branch. This allows you to review the incoming changes before updating your working branch. It first checks for a corresponding remote-tracking branch (`origin/main,` for example). If one exists, it updates the tracking branch with the changes from the remote branch.
 
 ```bash
 git fetch
@@ -41,7 +39,7 @@ If you don't need or want to review remote changes before merging, you can use t
 
 ### Git pull
 
-The `git pull` command calls [`git fetch`](#git-fetch) followed immediately by `git merge.` This is often what you desire to do, but some people prefer to use `git fetch` followed by `git merge` to make sure they understand the changes they are merging into their branch before the merge happens (see [`Git fetch`](#git-fetch)).
+The `git pull` command calls [`git fetch`](#git-fetch) followed immediately by [`git merge`](https://git-scm.com/docs/git-merge). This is often the desired result when working collaboratively; however, some developers may prefer to call `git fetch` to make sure they understand the incoming changes before merging them with `git merge.`
 
 ```bash
 git pull
