@@ -20,7 +20,7 @@ To https://github.com/example/example.git
 
 In this case, you need to first synchronize your branch with the remote branch by either running `git pull` or `git fetch` followed by `git merge`. See [`git pull`](#git-pull) and [`git fetch`](#git-fetch) for details on each approach.
 
-## Git fetch
+### Git fetch
 
 The `git fetch` command updates your remote-tracking branch with changes from the remote branch, but does not merge those changes into your local branch. This allows you to review the incoming changes before updating your working branch. It first checks for the existence of a corresponding remote-tracking branch (`origin/main,` for example). If one exists, it updates the tracking branch with the changes from the remote branch.
 
@@ -39,6 +39,15 @@ git merge origin/main
 
 If you don't need or want to review remote changes before merging, you can use the [`git pull`](#git-pull) command, which combines `git fetch` and `git merge` in a single operation.
 
-## Git pull
+### Git pull
 
-Often `git push` and `git pull` are described as equivalent. This isn't entirely correct, since `git pull` does two things: it calls `git fetch` followed immediately by `git merge`. This is often what we desire to do, but some people prefer to use `git fetch` followed by `git merge` to make sure they understand the changes they are merging into their branch before the merge happens.
+The `git pull` command calls [`git fetch`](#git-fetch) followed immediately by `git merge.` This is often what you desire to do, but some people prefer to use `git fetch` followed by `git merge` to make sure they understand the changes they are merging into their branch before the merge happens (see [`Git fetch`](#git-fetch)).
+
+```bash
+git pull
+Updating cc57037..f91adc6
+Fast-forward
+ team.md | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 team.md
+```
