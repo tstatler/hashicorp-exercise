@@ -18,11 +18,26 @@ To https://github.com/example/example.git
 ! [rejected]        feature-branch -> feature-branch
 ```
 
-In this case, you need to first synchronize your branch with the remote branch by either running `git pull` or `git fetch` followed by `git merge`. S
+In this case, you need to first synchronize your branch with the remote branch by either running `git pull` or `git fetch` followed by `git merge`. See [`git pull`](#git-pull) and [`git fetch`](#git-fetch) for details on each approach.
 
 ## Git fetch
 
-`git fetch` again takes our current branch, and checks to see if there is a tracking branch. If so, it looks for changes in the remote branch, and pulls them into the tracking branch. It does not change your local branch. To do that, you'll need to do `git merge origin/master` (for the "master" branch) to merge those changes into your branch - probably also called "master".
+The `git fetch` command updates your remote-tracking branch with changes from the remote branch, but does not merge those changes into your local branch. This allows you to review the incoming changes before updating your working branch. It first checks for the existence of a corresponding remote-tracking branch (`origin/main,` for example). If one exists, it updates the tracking branch with the changes from the remote branch.
+
+```bash
+git fetch
+...
+From https://github.com/example/example-repo
+   cc57037..f91adc6  main       -> origin/main
+```
+
+Assuming you had the `main` branch checked out locally and `origin` was the remote name, you would run the following command to merge the fetched changes:
+
+```bash
+git merge origin/main
+```
+
+If you don't need or want to review remote changes before merging, you can use the [`git pull`](#git-pull) command, which combines `git fetch` and `git merge` in a single operation.
 
 ## Git pull
 
